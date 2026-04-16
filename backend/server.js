@@ -25,9 +25,10 @@ app.use("/api/applications", applicationRoutes);
 // ✅ DB CONNECT (MongoDB Atlas)
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("✅ MongoDB Atlas Connected"))
-    .catch(err => console.error("❌ MongoDB connection error:", err));
+    .catch(err => console.error("❌ MongoDB connection error:", err)); ++
 
-// ✅ SERVER
-app.listen(5000, () => {
-    console.log("Server running on port 5000");
-});
+
+        // ✅ SERVER
+        app.listen(5000, () => {
+            console.log("Server running on port 5000");
+        });

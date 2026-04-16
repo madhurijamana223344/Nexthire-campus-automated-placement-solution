@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import API_BASE from "./api";
 
 function StudentProfile() {
   const navigate = useNavigate();
@@ -69,7 +70,7 @@ const save = async () => {
     formData.append("email", "student@gmail.com"); // later dynamic
     formData.append("resume", profile.resume);
 
-    const res = await fetch("http://localhost:5000/api/profile", {
+    const res = await fetch(`${API_BASE}/profile`, {
       method: "POST",
       body: formData
     });

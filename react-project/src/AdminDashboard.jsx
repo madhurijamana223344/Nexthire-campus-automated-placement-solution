@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import API_BASE from "./api";
+
 
 function AdminDashboard() {
   const [students, setStudents] = useState([]);
@@ -14,7 +16,7 @@ function AdminDashboard() {
   // ================= FETCH STUDENTS =================
   const fetchStudents = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/profile");
+      const res = await fetch(`${API_BASE}/profile`);
       const data = await res.json();
 
       setStudents(data.data || []);
@@ -26,7 +28,7 @@ function AdminDashboard() {
   // ================= FETCH JOBS =================
   const fetchJobs = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/jobs");
+      const res = await fetch(`${API_BASE}/jobs`);
       const data = await res.json();
 
       setJobs(data || []);
@@ -38,7 +40,7 @@ function AdminDashboard() {
   // ================= DELETE STUDENT =================
   const deleteStudent = async (id) => {
     try {
-      await fetch(`http://localhost:5000/api/profile/${id}`, {
+      await fetch(`${API_BASE}/profile/${id}`, {
         method: "DELETE"
       });
 
@@ -51,7 +53,7 @@ function AdminDashboard() {
   // ================= DELETE JOB =================
   const deleteJob = async (id) => {
     try {
-      await fetch(`http://localhost:5000/api/jobs/${id}`, {
+      await fetch(`${API_BASE}/jobs/${id}`, {
         method: "DELETE"
       });
 
@@ -107,7 +109,7 @@ function AdminDashboard() {
 
                 {s.resume && (
                   <a
-                    href={`http://localhost:5000/uploads/${s.resume}`}
+                    href={`/uploads/${s.resume}`}
                     target="_blank"
                     rel="noreferrer"
                   >

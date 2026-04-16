@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import API_BASE from "./api";
+
 
 function RecruiterDashboard() {
   const [applications, setApplications] = useState([]);
@@ -17,14 +19,14 @@ function RecruiterDashboard() {
       // ✅ TRY recruiter-specific API
       if (recruiter && recruiter._id) {
         const res = await fetch(
-          `http://localhost:5000/api/applications/recruiter/${recruiter._id}`
+          `${API_BASE}/applications/recruiter/${recruiter._id}`
         );
         data = await res.json();
       }
 
       // 🔥 FALLBACK → if empty, load ALL applications
       if (!data || data.length === 0) {
-        const res = await fetch("http://localhost:5000/api/applications");
+        const res = await fetch(`${API_BASE}/applications`);
         data = await res.json();
       }
 
@@ -39,7 +41,7 @@ function RecruiterDashboard() {
   };
 
   const updateStatus = async (id, status) => {
-    await fetch(`http://localhost:5000/api/applications/${id}`, {
+    await fetch(`${API_BASE}/applications/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"

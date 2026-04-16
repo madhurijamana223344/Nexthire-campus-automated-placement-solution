@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import API_BASE from "./api";
+
 
 function JobsPage() {
   const [jobsData, setJobsData] = useState([]);
@@ -95,7 +97,7 @@ function JobsPage() {
 
   const fetchJobs = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/jobs");
+      const res = await fetch(`${API_BASE}/jobs`);
       const data = await res.json();
 
       const cleaned = [...staticJobs, ...data].map(job => ({
@@ -112,7 +114,7 @@ function JobsPage() {
 
   const deleteJob = async (job, index) => {
     if (job._id) {
-      await fetch(`http://localhost:5000/api/jobs/${job._id}`, {
+      await fetch(`${API_BASE}/jobs/${job._id}`, {
         method: "DELETE"
       });
       fetchJobs();
@@ -138,7 +140,7 @@ function JobsPage() {
   // 🔥 FIXED APPLY FUNCTION
   const submitApplication = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/applications", {
+      const res = await fetch(`${API_BASE}/applications`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -200,7 +202,7 @@ function JobsPage() {
                 src={
                   job.img?.startsWith("http")
                     ? job.img
-                    : `http://localhost:5000/uploads/${job.img}`
+                    : `/uploads/${job.img}`
                 }
                 alt="job"
                 style={{

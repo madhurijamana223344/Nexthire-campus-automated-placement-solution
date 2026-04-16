@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import API_BASE from "./api";
+
 
 function StudentDashboard() {
   const [appliedJobs, setAppliedJobs] = useState([]);
@@ -11,7 +13,7 @@ function StudentDashboard() {
 
   const fetchApplications = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/applications");
+      const res = await fetch(`${API_BASE}/applications`);
       const data = await res.json();
       setAppliedJobs(data);
     } catch (err) {
@@ -22,7 +24,7 @@ function StudentDashboard() {
   // ✅ DELETE
   const deleteApplication = async (id) => {
     try {
-      await fetch(`http://localhost:5000/api/applications/${id}`, {
+      await fetch(`${API_BASE}/applications/${id}`, {
         method: "DELETE"
       });
 

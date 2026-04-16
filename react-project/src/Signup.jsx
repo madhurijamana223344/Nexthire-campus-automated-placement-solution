@@ -1,5 +1,6 @@
- import { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import API_BASE from "./api";
 
 function Signup() {
   const navigate = useNavigate();
@@ -49,7 +50,7 @@ const signup = async () => {
   if (!validate()) return;
 
   try {
-    const res = await fetch("http://localhost:5000/api/auth/signup", {
+    const res = await fetch(`${API_BASE}/auth/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

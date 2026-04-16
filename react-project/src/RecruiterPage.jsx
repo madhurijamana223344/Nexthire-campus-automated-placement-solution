@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import API_BASE from "./api";
 
 function RecruiterPage() {
   const navigate = useNavigate();
@@ -57,7 +58,7 @@ function RecruiterPage() {
       // 🔥 IMPORTANT FIX
       formData.append("recruiterId", recruiter._id);
 
-      const res = await fetch("http://localhost:5000/api/jobs", {
+      const res = await fetch(`${API_BASE}/jobs`, {
         method: "POST",
         body: formData
       });
