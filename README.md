@@ -58,14 +58,14 @@ The project uses **MongoDB** for storing and managing data.
 * Manage users
 * Track job postings and applications
 
-## 🔄 Workflow
+## Workflow
 
 Login → Select Role → Dashboard →
 Recruiter adds jobs → Jobs stored in database →
 Student views jobs → Student applies →
 Admin monitors system
 
-## ⚙️ Installation and Setup
+##  Installation and Setup
 
 ### Clone the project
 
@@ -117,8 +117,6 @@ npm run dev
 *  Analytics dashboard
 *  Mobile application
 *  Cloud deployment
-
----
 
 ## Advantages
 
